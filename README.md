@@ -11,14 +11,14 @@ yarn
 ```
 ## or
 ```
-npm i typescript
 npm i --save-dev typescript
+npm i --save-dev @types/typescript
 
 npm i sharp
 npm i --save-dev @types/sharp
 
-npm i jasmine
-npm i jasmine-spec-reporter
+npm i --save-dev jasmine
+npm i --save-dev jasmine-spec-reporter
 npm i --save-dev @types/jasmine
 
 npm i supertest
@@ -27,12 +27,10 @@ npm i --save-dev @types/supertest
 npm i express
 npm i --save-dev @types/express
 
-npm i --save-dev @types/node
-
-npm i nodemon
 npm i --save-dev nodemon
-npm i ts-node
-npm  i --save-dev ts-node
+npm i --save-dev @types/nodemon
+
+npm i --save-dev ts-node
 
 npm i --save-dev prettier
 npm i --save-dev eslint
@@ -42,6 +40,8 @@ npm i --save-dev eslint-plugin-prettier
 ```
 ##### To run server:
 `npm run start`
+#### or
+`yarn start`
 
 ### Available Image options
 1. `fjord`
