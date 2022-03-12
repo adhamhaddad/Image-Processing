@@ -8,9 +8,9 @@ const inputFile = path.join(__dirname, "../../images/full/");
 
 export default async function validate (req: Request, res: Response, next: NextFunction): Promise<unknown> {
     try {
-        let name = await req.query.name as string;
-        let width = await req.query.width as string;
-        let height = await req.query.height as string;
+        let name = req.query.name as string;
+        let width = req.query.width as string;
+        let height = req.query.height as string;
         
         // validate inputs
         if (!fs.existsSync(`${inputFile}${name}.jpg`)) {
@@ -27,7 +27,7 @@ export default async function validate (req: Request, res: Response, next: NextF
         }
 
         next();
-    } catch (err) {
-        throw new Error(`somthing wrong. ${err}`);
+    } catch (error) {
+        throw new Error(`somthing wrong. ${error}`);
     }
 };

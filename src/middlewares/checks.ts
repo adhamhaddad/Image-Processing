@@ -18,7 +18,7 @@ export default async function checks (req: Request, res: Response, next: NextFun
         }
 
         // Checks if folder thumb exist or not
-        const outputFile = await path.join(__dirname, "../../images/thumb/");
+        const outputFile = path.join(__dirname, "../../images/thumb/");
 
         const thumbExists: unknown = fs.existsSync(outputFile);
         if (!thumbExists) {
@@ -39,7 +39,7 @@ export default async function checks (req: Request, res: Response, next: NextFun
             });
             return res.status(200).end(openImage);
         }
-    } catch (err) {
-        throw new Error(`somthing went wrong. ${err}`);
+    } catch (error) {
+        throw new Error(`somthing went wrong. ${error}`);
     }
 }
