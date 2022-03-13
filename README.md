@@ -5,7 +5,7 @@ __Example:__`http://localhost:3000/resize?name=fjord&width=200&height=200`
 ## Installations
 
 ##### open Terminal and run the following commands:
-
+#
 ```
 yarn
 ```
@@ -29,7 +29,6 @@ npm i --save-dev @types/express
 
 npm i --save-dev nodemon
 npm i --save-dev @types/nodemon
-
 npm i --save-dev ts-node
 
 npm i --save-dev prettier

@@ -1,52 +1,79 @@
 import supertest from 'supertest';
-import {Request, Response, NextFunction} from 'express';
 import fs from 'fs';
 import path from 'path';
-import resize from '../middlewares/resize';
 import app from '../app';
+import checks from '../middlewares/checks';
 
 const request = supertest(app);
 
-describe("Test endpoint response", () => {
-    it('checks if image exists', async () => {
+describe("Test if Image Exist", () => {
+    it('expect checkIfImageExist function defined', async () => {
         try {
-            let outputFile = await fs.existsSync(path.join(__dirname, "../../images/thumb/"));
-            expect(outputFile).toBe(true);
+            expect(checks).toBeDefined();
         } catch (error) {
             throw new Error(`Error Occured ${error}`)
         }
     });
 
-    it('checks if image not exist and return with false', async () => {
+    it('expect checkIfImageExist function to return false with file name image_200_200.jpg', () => {
+        let image = fs.existsSync(path.join(__dirname, "../../images/thumb/"));
+        expect(image).toBe(false);
+    });
+
+});
+
+describe('Test endpoint response', () => {
+    // Get preview endpoint
+    it('Get the api/images/preview endpoint', async () => {
         try {
-            let image = await fs.existsSync(path.join(__dirname, "../../images/thumb/"));
-            expect(image).toBe(false);
+            let response = await request.get('/api/images/preview?name=fjord');
+            expect(response.status).toBe(200);
         } catch (error) {
-            throw new Error(`Error Occudred ${error}`)
+            throw new Error(`Error Occured ${error}`);
+        }
+    });
+
+    // Get resize endpoint
+    it("Get the api/images/resize endpoint", async () => {
+        try {
+            let response = await request.get('/api/images/resize?name=fjord&width=200&height=200');
+            expect(response.status).toBe(200);
+        } catch (error) {
+            throw new Error(`Error Occured ${error}`);
+        }
+    });
+
+    /*
+    const outputFile = path.join(__dirname, "../../images/thumb/");
+    
+    // Images Exists
+    it('Images by second time properties should exist', async () => {
+        try {
+            const imageExists = fs.existsSync(`${outputFile}fjord_200_200.jpg`);
+            expect(!imageExists).toBe(true);
+        } catch (error) {
+            console.log(`Error Occured ${error}`);
         }
     })
 
-    it("gets the resize/images endpoint", async () => {
-        let response = await request.get('/resize');
-        expect(response.status).toBe(200);
-    });
-    xit("gets the api/images endpoint", () => {
-    });
-});
-/*
-describe("Image transform function should solve or reject", async () => {
-    const outputFile = await path.join(__dirname, "../../images/thumb/");
+    it('Images by first time properties should not be exist', async () => {
+        try {
+            const imageExists = fs.existsSync(`${outputFile}fjord_200_200.jpg`);
+            expect(!imageExists).toBe(false);
+        } catch (error) {
+            console.log(`Error Occured ${error}`);
+        }
+    })
 
     it("Expect transform to not throw error", async () => {
-        const imageExists = fs.existsSync(`${outputFile}${req.query.name}_${req.query.width}_${req.query.height}.jpg`);
+        const imageExists = fs.existsSync(`${outputFile}fjord_200_200.jpg`);
 
         expect(!imageExists).toBe(false);
     });
     it("Expect transform to throw specific error", async () => {
-        const imageExists = fs.existsSync(`${outputFile}${req.query.name}_${req.query.width}_${req.query.height}.jpg`);
+        const imageExists = fs.existsSync(`${outputFile}fjord_200_200.jpg`);
 
         expect(imageExists).toBe(true);
     });
-
+    */
 });
-*/

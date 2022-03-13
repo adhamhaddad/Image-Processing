@@ -1,11 +1,8 @@
-import {Router} from 'express';
-import validate from '../middlewares/validate';
-import checks from '../middlewares/checks';
-import resize from '../middlewares/resize';
+import { Router } from 'express';
+import routes from './api/routes';
 
 const router = Router();
-const middlewares = [validate, checks, resize];
 
-router.get('/', middlewares);
+router.use('/images', routes);
 
 export default router;
