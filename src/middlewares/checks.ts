@@ -5,14 +5,13 @@ import path from 'path';
 // I/O
 const thumbnails = path.join(__dirname, "../../images/thumb/");
 
-
 export default async function checks (req: Request, res: Response, next: NextFunction): Promise<unknown> {
     try {
         // Checks if the image exists
-        const imageExists = fs.existsSync(`${thumbnails}${req.query.name}_${req.query.width}_${req.query.height}.jpg`);
+        const imageExist = fs.existsSync(`${thumbnails}${req.query.name}_${req.query.width}_${req.query.height}.jpg`);
 
         // If the image does not exist
-        if (imageExists) {
+        if (imageExist) {
             // Open Image
             const imageFile = fs.readFile(`${thumbnails}${req.query.name}_${req.query.width}_${req.query.height}.jpg`, (error, image) => {
                 if (error) {

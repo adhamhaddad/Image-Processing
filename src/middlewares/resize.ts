@@ -9,13 +9,13 @@ const originalFolder = path.join(__dirname, "../../images/full/");
 export default async function resize (req: Request, res: Response): Promise<unknown> {
     try {
         // Checks if folder thumb exist or not
-        const thumbnails = path.join(__dirname, "../../images/thumbnails/");
+        const thumbnails = path.join(__dirname, "../../images/thumb/");
 
         if (fs.existsSync(thumbnails)) {
             console.log("folder exists");
         } else {
             // Make thumbnails Directory
-            fs.mkdir(path.join(__dirname, "../../images/thumbnails"), (error) => {
+            fs.mkdir(path.join(__dirname, "../../images/thumb"), (error) => {
                 if (error) {
                     console.log("error", error);
                 } else {

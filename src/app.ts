@@ -13,6 +13,37 @@ app.use(morgan('short'));
 
 app.use("/api", router);
 
+// Test Env
+/*
+import path from 'path';
+import fs from 'fs';
+
+
+app.use(express.static('public'))
+
+app.get('/test', (req: Request, res: Response) => {
+    console.log(__dirname);
+    res.sendFile(path.join(__dirname, '../public/html/index.html'));
+});
+
+app.get('/testt', (req: Request, res: Response) => {
+    const request = req.body.image;
+    const imageFile = fs.readFile(path.join(`${__dirname}/../images/full/fjord.jpg`), (error, image) => {
+        if (error) {
+            console.log(`Error Occured ${error}`);
+        } else {
+            res.writeHead(200, {
+                'Content-Length': image.length,
+                'Content-Type': 'image/png',
+            });
+            return res.status(200).end(image);
+        }
+    });
+    return imageFile;
+});
+*/
+// End Test
+
 // express server
 app.listen(port, () => {
     console.log(`server running on http://localhost:${port}`);
