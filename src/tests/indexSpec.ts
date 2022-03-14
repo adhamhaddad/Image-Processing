@@ -6,40 +6,41 @@ import checks from '../middlewares/checks';
 
 const request = supertest(app);
 
-describe("Test if Image Exist", () => {
-    it('expect imageExist function defined', () => {
-        expect(checks).toBeDefined();
-    });
+describe('Test if Image Exist', () => {
+  it('expect imageExist function defined', () => {
+    expect(checks).toBeDefined();
+  });
 
-    it('expect imageExist function to return false with file name image_200_200.jpg', () => {
-        let image = fs.existsSync(path.join(__dirname, "../../images/thumb/"));
-        expect(image).toBe(false);
-    });
-
+  it('expect imageExist function to return false with file name image_200_200.jpg', () => {
+    const image = fs.existsSync(path.join(__dirname, '../../images/thumb/'));
+    expect(image).toBe(false);
+  });
 });
 
 describe('Test endpoint response', () => {
-    // Get preview endpoint
-    it('Get the api/images/preview endpoint', async () => {
-        try {
-            let response = await request.get('/api/images/preview?name=fjord');
-            expect(response.status).toBe(200);
-        } catch (error) {
-            throw new Error(`Error Occured ${error}`);
-        }
-    });
+  // Get preview endpoint
+  it('Get the api/images/preview endpoint', async () => {
+    try {
+      const response = await request.get('/api/images/preview?name=fjord');
+      expect(response.status).toBe(200);
+    } catch (error) {
+      throw new Error(`Error Occured ${error}`);
+    }
+  });
 
-    // Get resize endpoint
-    it("Get the api/images/resize endpoint", async () => {
-        try {
-            let response = await request.get('/api/images/resize?name=fjord&width=200&height=200');
-            expect(response.status).toBe(200);
-        } catch (error) {
-            throw new Error(`Error Occured ${error}`);
-        }
-    });
+  // Get resize endpoint
+  it('Get the api/images/resize endpoint', async () => {
+    try {
+      const response = await request.get(
+        '/api/images/resize?name=fjord&width=200&height=200'
+      );
+      expect(response.status).toBe(200);
+    } catch (error) {
+      throw new Error(`Error Occured ${error}`);
+    }
+  });
 
-    /*
+  /*
     const outputFile = path.join(__dirname, "../../images/thumb/");
     
     // Images Exists

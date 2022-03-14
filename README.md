@@ -1,6 +1,12 @@
+# Image Processing API
+#
 ## Description
 This API gets in url params: `name`, `width` and `height` then resize images depends on width or height value.
-__Example:__`http://localhost:3000/resize?name=fjord&width=200&height=200`
+__Example:__ `http://localhost:3000/resize?name=fjord&width=200&height=200`
+#
+
+Also you can open the original full size by replace `resize` with `preview` and `name` of image.
+__Example:__ `http://localhost:3000/preview?name=fjord`
 
 ## Installations
 
@@ -9,7 +15,30 @@ __Example:__`http://localhost:3000/resize?name=fjord&width=200&height=200`
 ```
 yarn
 ```
-## or
+
+##### To run server:
+`npm run start`
+#### or
+`yarn start`
+
+### Available Image options
+1. `fjord`
+2. `palmtunnel`
+3. `encendaport`
+4. `santamonica`
+5. `icelandwaterfall`
+
+
+### Functionality
+- user can query endpoint using various params and queries to retrieve an image with a specified height and width.
+- The default height and width is set to 200px.
+- All images requested will be saved to disk.
+
+### Code Styles
+This project uses `eslint` and `prettier`. all configurations for this project inside `package.json` file.
+
+***in case lost package.json you can install dependencies of project by follow this command:***
+
 ```
 npm i --save-dev typescript
 npm i --save-dev @types/typescript
@@ -37,29 +66,9 @@ npm i --save-dev eslint-config-prettier
 npm i --save-dev eslint-plugin-prettier
 
 ```
-##### To run server:
-`npm run start`
-#### or
-`yarn start`
-
-### Available Image options
-1. `fjord`
-2. `palmtunnel`
-3. `encendaport`
-4. `santamonica`
-5. `icelandwaterfall`
-
-
-### Functionality
-- user can query endpoint using various params and queries to retrieve an image with a specified height and width.
-- The default height and width is set to 200px.
-- All images requested will be saved to disk.
-
-### Code Styles
-This project uses `eslint` and `prettier` . all configurations for this project inside `package.json` file.
 
 ### Built With
-- Node.js
-- TypeScript
-- Express
-- Jasmine
+- **Node.js**
+- **TypeScript**
+- **Express.js**
+- **Jasmine**
