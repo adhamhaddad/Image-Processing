@@ -3,6 +3,6 @@ import routes from './api/routes';
 
 const router = Router();
 
-router.use('/images', routes);
+router.use('/api', routes);
 
 export default router;
