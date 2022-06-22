@@ -1,24 +1,19 @@
 import express, { Application } from 'express';
-import morgan from 'morgan';
 import helmet from 'helmet';
-import router from './routes/index';
+import handler from './routes/handler';
 
+// Express App
 const app: Application = express();
 const port: number = 3000;
 
-
 // Middlewares
 app.use(express.json());
-app.use(morgan('short'));
+app.use(express.urlencoded({extended: false}));
 app.use(helmet());
 
-
 // Requests
-app.use("/", router);
-
+app.use("/", handler);
 
 // Express Server
-app.listen(port, (): void => {
-    console.log(`Server Litening on http://localhost:${port}`);
-});
+app.listen(port, (): void => console.log(`Server Litening on http://localhost:${port}`));
 export default app;

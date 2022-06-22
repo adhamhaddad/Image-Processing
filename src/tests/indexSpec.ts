@@ -1,7 +1,7 @@
 import supertest from 'supertest';
 import fs from 'fs';
 import path from 'path';
-import app from '../app';
+import app from '..';
 import checks from '../middlewares/checks';
 
 const request = supertest(app);

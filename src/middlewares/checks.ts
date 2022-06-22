@@ -10,10 +10,8 @@ export default async function checks(req: Request, res: Response, next: NextFunc
         // Checks if the image exists
         const imageExist = fs.existsSync(`${thumb}${req.query.name}_${req.query.width}_${req.query.height}.jpg`);
 
-        // If the image does not exist
         if (imageExist) {
-            // Open Image
-            const imageFile = fs.readFile(`${thumb}${req.query.name}_${req.query.width}_${req.query.height}.jpg`, (error, image) => {
+            fs.readFile(`${thumb}${req.query.name}_${req.query.width}_${req.query.height}.jpg`, (error, image) => {
                 if (error) {
                     console.log(`Error Occured ${error}`);
                 } else {
@@ -24,7 +22,6 @@ export default async function checks(req: Request, res: Response, next: NextFunc
                     return res.status(200).end(image);
                 }
             });
-            return imageFile;
         } else {
             next();
         }

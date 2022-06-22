@@ -10,7 +10,7 @@ __Example:__ `http://localhost:3000/api/preview?name=fjord`
 
 ## Installations
 
-##### open Terminal and run the following commands:
+##### open Terminal in Image-Processing Directory and run the following commands:
 #
 `yarn` or `npm install`
 #
@@ -40,28 +40,21 @@ This project uses `eslint` and `prettier`. all configurations for this project i
 In the project directory, you can run:
 
 ##### `npm run dev` or `yarn dev`
-
 Runs the app in the development mode.
-Open http://localhost:3000/resize?name=fjord&width=200&height=200 to view it in the browser.
-
 The page will reload automatically if you make edits.
 
 ##### `npm run format` or `yarn format`
-will format by prettier and will also see if any lint errors in the console.
-
+Will format by prettier and will also see if any lint errors in the console.
 
 ##### `npm run test` or `yarn test`
-
 Launches the test runner in the interactive watch mode.
 See the section about running tests for more information.
 
 ##### `npm run build` or `yarn build`
-
-Builds the app for production to the build folder.
-its format typescript to javascript
+Builds the app for production to the dist folder.
+It's format TypeScript to JavaScript
 
 ##### `npm run start` or `yarn start`
-
 Build and runs the app in the clients mode.
 Open http://localhost:3000/resize?name=fjord&width=200&height=200 to view it in the browser.
 
