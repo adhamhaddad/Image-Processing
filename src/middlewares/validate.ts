@@ -27,6 +27,6 @@ export default async function validate(req: Request, res: Response, next: NextFu
         }
         next();
     } catch (error) {
-        throw new Error(`somthing wrong. ${error}`);
+        throw new Error(`somthing wrong. ${(error as Error).message}`);
     }
 }

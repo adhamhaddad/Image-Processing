@@ -21,6 +21,6 @@ export default async function preview(req: Request, res: Response): Promise<void
         });
 
     } catch (error) {
-        throw new Error(`somthing went wrong. ${error}`);
+        throw new Error(`somthing went wrong. ${(error as Error).message}`);
     }
 }

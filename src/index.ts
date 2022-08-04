@@ -4,7 +4,7 @@ import handler from './routes/handler';
 
 // Express App
 const app: Application = express();
-const port: number = 3000;
+export const port: number = 3000;
 
 // Middlewares
 app.use(express.json());

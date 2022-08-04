@@ -13,7 +13,7 @@ export default async function checks(req: Request, res: Response, next: NextFunc
         if (imageExist) {
             fs.readFile(`${thumb}${req.query.name}_${req.query.width}_${req.query.height}.jpg`, (error, image) => {
                 if (error) {
-                    console.log(`Error Occured ${error}`);
+                    console.log(`Error Occured ${error.message}`);
                 } else {
                     res.writeHead(200, {
                         'Content-Length': image.length,
@@ -26,6 +26,6 @@ export default async function checks(req: Request, res: Response, next: NextFunc
             next();
         }
     } catch (error) {
-        throw new Error(`somthing went wrong. ${error}`);
+        throw new Error(`somthing went wrong. ${(error as Error).message}`);
     }
 }
